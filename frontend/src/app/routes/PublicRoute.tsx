@@ -12,7 +12,10 @@ const PublicRoute = (): ReactElement => {
     }
 
     if (isError) {
-        if (axios.isAxiosError(error) && error.response?.status === 401) {
+        if (
+            axios.isAxiosError(error) &&
+            (error.response?.status === 401 || error.response?.status === 404)
+        ) {
             return <Outlet />;
         }
         return (

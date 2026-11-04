@@ -42,6 +42,8 @@ The Axios instance is configured in `src/shared/api/axiosInstance.ts` and uses `
 
 If your backend runs on a different host or port during development, set `VITE_API_URL` accordingly (for example `http://localhost:5000/api`).
 
+For a Vercel deployment, add `VITE_API_URL` in the frontend project's Environment Variables with the deployed backend API URL (including `/api`), then redeploy. Without it, requests such as `/auth/me` go to the frontend's own domain, where the API endpoint may return `404`.
+
 ## Notes
 
 - Keep any secrets on the server side — Vite-exposed env vars are bundled into client code.
